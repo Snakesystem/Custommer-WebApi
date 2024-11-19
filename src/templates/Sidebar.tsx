@@ -1,8 +1,23 @@
+import { useItemsActions } from "@context/store";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 
 export default function Sidebar() {
 
   const location = useLocation();
+  const open = useSelector((state: any) => state.sidebar);
+  const { toggleSidebar } = useItemsActions();
+
+  useEffect(() => {
+    if(open) {
+      document.body.classList.add('g-sidenav-pinned');
+      // document.body.classList.remove('g-sidenav-show');
+    } else {
+      document.body.classList.remove('g-sidenav-pinned');
+      // document.body.classList.add('g-sidenav-show');
+    }
+  }, [open]);
 
   const isActive = (path: string) => {
     return location.pathname === path ? "nav-link active" : "nav-link";
@@ -11,7 +26,7 @@ export default function Sidebar() {
   return (
     <aside className="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 " id="sidenav-main">
     <div className="sidenav-header">
-      <i className="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
+      <i onClick={toggleSidebar} className="bi bi-x p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-xl-none" aria-hidden="false" id="iconSidenav"></i>
       <Link className="navbar-brand m-0" to="/">
         <img src="/img/logos/mastercard.png" width="26px" height="26px" className="navbar-brand-img h-100" alt="main_logo"/>
         <span className="ms-1 font-weight-bold">Catatan Si Bolang</span>
@@ -56,7 +71,7 @@ export default function Sidebar() {
     </div>
     <div className="sidenav-footer mx-3 ">
       <div className="card card-plain shadow-none" id="sidenavCard">
-        <img className="w-50 mx-auto" src="../assets/img/illustrations/icon-documentation.svg" alt="sidebar_illustration"/>
+        <img className="w-50 mx-auto" src="/img/illustrations/icon-documentation.svg" alt="sidebar_illustration"/>
         <div className="card-body text-center p-3 w-100 pt-0">
           <div className="docs-info">
             <h6 className="mb-0">Need help?</h6>

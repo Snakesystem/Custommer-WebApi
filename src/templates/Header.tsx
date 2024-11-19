@@ -1,3 +1,4 @@
+import { useItemsActions } from "@context/store";
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
@@ -5,6 +6,7 @@ export default function Header() {
 
   const location = useLocation();
   const [pageTitle, setPageTitle] = useState<string>('');
+  const { toggleSidebar, toggleSetting } = useItemsActions();
 
   useEffect(() => {
     if (location.pathname === '/') {
@@ -13,10 +15,11 @@ export default function Header() {
       const pathname = location.pathname.slice(1)
       setPageTitle(pathname?.charAt(0).toUpperCase() + pathname?.slice(1));
     }
+
   }, [location]);
 
   return (
-    <nav className="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl " id="navbarBlur" data-scroll="false">
+    <nav className="navbar sticky-top navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl " id="navbarBlur" data-scroll="false">
       <div className="container-fluid py-1 px-3">
         <nav aria-label="breadcrumb">
           <ol className="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
@@ -29,18 +32,18 @@ export default function Header() {
           <div className="ms-md-auto pe-md-3 d-flex align-items-center">
             <div className="input-group">
               <span className="input-group-text text-body"><i className="bi bi-search" aria-hidden="true"></i></span>
-              <input type="text" className="form-control" placeholder="Type here..."/>
+              <input type="text" className="form-control" placeholder="Cari user..."/>
             </div>
           </div>
           <ul className="navbar-nav  justify-content-end">
             <li className="nav-item d-flex align-items-center">
-              <Link to="#" className="nav-link text-white font-weight-bold px-0">
+              <div className="nav-link text-white font-weight-bold px-0">
                 <i className="bi bi-person-fill me-sm-1"></i>
-                <span className="d-sm-inline d-none">Sign In</span>
-              </Link>
+                <span className="d-sm-inline d-none">Si Bolang</span>
+              </div>
             </li>
             <li className="nav-item d-xl-none ps-3 d-flex align-items-center">
-              <Link to="#" className="nav-link text-white p-0" id="iconNavbarSidenav">
+              <Link onClick={toggleSidebar} to="#" className="nav-link text-white p-0" id="iconNavbarSidenav">
                 <div className="sidenav-toggler-inner">
                   <i className="sidenav-toggler-line bg-white"></i>
                   <i className="sidenav-toggler-line bg-white"></i>
@@ -49,7 +52,7 @@ export default function Header() {
               </Link>
             </li>
             <li className="nav-item px-3 d-flex align-items-center">
-              <Link to="#" className="nav-link text-white p-0">
+              <Link onClick={toggleSetting} to="#" className="nav-link text-white p-0">
                 <i className="bi bi-gear-fill fixed-plugin-button-nav cursor-pointer"></i>
               </Link>
             </li>
@@ -62,7 +65,7 @@ export default function Header() {
                   <Link className="dropdown-item border-radius-md" to="#">
                     <div className="d-flex py-1">
                       <div className="my-auto">
-                        <img src="../assets/img/team-2.jpg" className="avatar avatar-sm  me-3 "/>
+                        <img src="/img/team-2.jpg" className="avatar avatar-sm  me-3 "/>
                       </div>
                       <div className="d-flex flex-column justify-content-center">
                         <h6 className="text-sm font-weight-normal mb-1">
@@ -80,7 +83,7 @@ export default function Header() {
                   <Link className="dropdown-item border-radius-md" to="#">
                     <div className="d-flex py-1">
                       <div className="my-auto">
-                        <img src="../assets/img/small-logos/logo-spotify.svg" className="avatar avatar-sm bg-gradient-dark  me-3 "/>
+                        <img src="/img/small-logos/logo-spotify.svg" className="avatar avatar-sm bg-gradient-dark  me-3 "/>
                       </div>
                       <div className="d-flex flex-column justify-content-center">
                         <h6 className="text-sm font-weight-normal mb-1">

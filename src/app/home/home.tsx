@@ -124,7 +124,7 @@ export default function HomePage() {
           <div className="card card-carousel overflow-hidden h-100 p-0">
             <div id="carouselExampleCaptions" className="carousel slide h-100" data-bs-ride="carousel">
               <div className="carousel-inner border-radius-lg h-100">
-                <div className="carousel-item h-100 active" style={{backgroundImage: "url('../assets/img/carousel-1.jpg')", backgroundSize: "cover"}}>
+                <div className="carousel-item h-100 active" style={{backgroundImage: "url('/img/carousel-1.jpg')", backgroundSize: "cover"}}>
                   <div className="carousel-caption d-none d-md-block bottom-0 text-start start-0 ms-5">
                     <div className="icon icon-shape icon-sm bg-white text-center border-radius-md mb-3">
                       <i className="ni ni-camera-compact text-dark opacity-10"></i>
@@ -133,7 +133,7 @@ export default function HomePage() {
                     <p>There’s nothing I really wanted to do in life that I wasn’t able to get good at.</p>
                   </div>
                 </div>
-                <div className="carousel-item h-100" style={{backgroundImage: "url('../assets/img/carousel-2.jpg')", backgroundSize: "cover"}}>
+                <div className="carousel-item h-100" style={{backgroundImage: "url('/img/carousel-2.jpg')", backgroundSize: "cover"}}>
                   <div className="carousel-caption d-none d-md-block bottom-0 text-start start-0 ms-5">
                     <div className="icon icon-shape icon-sm bg-white text-center border-radius-md mb-3">
                       <i className="ni ni-bulb-61 text-dark opacity-10"></i>
@@ -142,7 +142,7 @@ export default function HomePage() {
                     <p>That’s my skill. I’m not really specifically talented at anything except for the ability to learn.</p>
                   </div>
                 </div>
-                <div className="carousel-item h-100" style={{backgroundImage: "url('../assets/img/carousel-3.jpg')", backgroundSize: "cover"}}>
+                <div className="carousel-item h-100" style={{backgroundImage: "url('/img/carousel-3.jpg')", backgroundSize: "cover"}}>
                   <div className="carousel-caption d-none d-md-block bottom-0 text-start start-0 ms-5">
                     <div className="icon icon-shape icon-sm bg-white text-center border-radius-md mb-3">
                       <i className="ni ni-trophy text-dark opacity-10"></i>
@@ -372,38 +372,6 @@ export default function HomePage() {
           </div>
         </div>
       </div>
-      <footer className="footer pt-3  ">
-        <div className="container-fluid">
-          <div className="row align-items-center justify-content-lg-between">
-            <div className="col-lg-6 mb-lg-0 mb-4">
-              <div className="copyright text-center text-sm text-muted text-lg-start">
-                © <script>
-                  document.write(new Date().getFullYear())
-                </script>,
-                made with <i className="fa fa-heart"></i> by
-                <a href="https://www.creative-tim.com" className="font-weight-bold" target="_blank">Creative Tim</a>
-                for a better web.
-              </div>
-            </div>
-            <div className="col-lg-6">
-              <ul className="nav nav-footer justify-content-center justify-content-lg-end">
-                <li className="nav-item">
-                  <a href="https://www.creative-tim.com" className="nav-link text-muted" target="_blank">Creative Tim</a>
-                </li>
-                <li className="nav-item">
-                  <a href="https://www.creative-tim.com/presentation" className="nav-link text-muted" target="_blank">About Us</a>
-                </li>
-                <li className="nav-item">
-                  <a href="https://www.creative-tim.com/blog" className="nav-link text-muted" target="_blank">Blog</a>
-                </li>
-                <li className="nav-item">
-                  <a href="https://www.creative-tim.com/license" className="nav-link pe-0 text-muted" target="_blank">License</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </footer>
     </div>
   )
 }

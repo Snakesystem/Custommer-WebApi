@@ -35,3 +35,13 @@ export const sidebarSlice = createSlice({
 });
 
 export const { toggleSidebar } = sidebarSlice.actions;
+
+export const settingSlice = createSlice({
+  name: 'setting',
+  initialState: false,
+  reducers: {
+    toggleSetting: (state) => !state,
+  },
+});
+
+export const { toggleSetting } = settingSlice.actions;

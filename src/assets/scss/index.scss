@@ -12,3 +12,29 @@ html, body {
     width: 100%;
     // background-color: $bg-body;
 }
+
+.notes-project {
+    width: 100% !important;
+}
+
+.horizontal-list {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    gap: 1rem;
+    margin-bottom: 0;
+
+    li {
+        list-style: none;
+        flex: 0 0 auto; /* Keeps items from shrinking */
+        margin: 0 1rem 1rem 1rem;
+    
+        .active {
+            background-color: rgb(215, 218, 219) !important;
+        }
+
+        span {
+            width: 7rem;
+        }
+    }
+}

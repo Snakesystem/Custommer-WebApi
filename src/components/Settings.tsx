@@ -1,24 +1,27 @@
-import { useState } from "react";
+import { useItemsActions, useSession } from "@context/store";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 export default function Settings() {
 
-    const [showSettings, setShowSettings] = useState<string>("");
+    const { toggleSetting } = useItemsActions();
+    const { logout } = useSession();
+    const setting = useSelector((state: any) => state?.setting);
 
   return (
     <>
-        <div className={`fixed-plugin ${showSettings}`}>
-            <Link to="#" onClick={() => setShowSettings("show")} className="fixed-plugin-button text-dark position-fixed px-3 py-2">
+        <div className={`fixed-plugin ${setting ? "show" : ""}`}>
+            <Link to="#" onClick={toggleSetting} className="fixed-plugin-button text-dark position-fixed px-3 py-2">
                 <i className="bi bi-gear-wide-connected"> </i>
             </Link>
             <div className="card shadow-lg">
             <div className="card-header pb-0 pt-3 ">
                 <div className="float-start">
-                <h5 className="mt-3 mb-0">Argon Configurator</h5>
-                <p>See our dashboard options.</p>
+                <h5 className="mt-3 mb-0">Si Bolang</h5>
+                <p>Programmer handal dan kreatif</p>
                 </div>
                 <div className="float-end mt-4">
-                <button onClick={() => setShowSettings("")} className="btn btn-link text-dark p-0 fixed-plugin-close-button">
+                <button onClick={toggleSetting} className="btn btn-link text-dark p-0 fixed-plugin-close-button">
                     <i className="bi bi-x fs-4"></i>
                 </button>
                 </div>
@@ -60,7 +63,7 @@ export default function Settings() {
                     <input className="form-check-input mt-1 ms-auto" type="checkbox" id="dark-version"/>
                 </div>
                 </div>
-                <a className="btn bg-gradient-dark w-100" href="#">Free Download</a>
+                <Link onClick={logout} className="btn bg-gradient-dark w-100" to="#">Sign Out</Link>
                 <a className="btn btn-outline-dark w-100" href="#">View documentation</a>
             </div>
             </div>

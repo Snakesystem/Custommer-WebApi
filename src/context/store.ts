@@ -2,7 +2,7 @@
 import { configureStore} from '@reduxjs/toolkit';
 import { useDispatch } from 'react-redux';
 import { counterSlice, decrement, increment, incrementByAmount } from './global/counter';
-import { addItem, deleteItem, itemsSlice, sidebarSlice, updateItem } from './global/item';
+import { addItem, deleteItem, itemsSlice, sidebarSlice, updateItem, settingSlice } from './global/item';
 import { login, logout, sessionSlice } from './global/session';
 import { useNavigate } from 'react-router-dom';
 
@@ -12,7 +12,8 @@ const store = configureStore({
     counter: counterSlice.reducer,
     item: itemsSlice.reducer,
     session: sessionSlice.reducer,
-    sidebar: sidebarSlice.reducer
+    sidebar: sidebarSlice.reducer,
+    setting: settingSlice.reducer
   },
 });
 
@@ -39,6 +40,7 @@ export const useItemsActions = () => {
       updateItem: (id: string, name: string, description: string) => dispatch(updateItem({ id, name, description })),
       deleteItem: (id: string) => dispatch(deleteItem(id)),
       toggleSidebar: () => dispatch(sidebarSlice.actions.toggleSidebar()),
+      toggleSetting: () => dispatch(settingSlice.actions.toggleSetting()),
     };
 };
 
